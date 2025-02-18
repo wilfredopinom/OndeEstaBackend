@@ -1,11 +1,11 @@
-
-import { PrismaClient, User } from "@prisma/client";
+import { prisma } from "../database/database";
+import { HttpException } from "../exceptions/httpException";
+import { User } from "@prisma/client";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
-import { HttpException } from "../exceptions/httpException";
 
 // usar un patron: singlenton
-const prisma = new PrismaClient()
+//const prisma = new PrismaClient()
 const TOKEN_PASSWORD = process.env.TOKEN_PASSWORD || 'pass'
 
 export class AuthService {
