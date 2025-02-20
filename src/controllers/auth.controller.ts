@@ -10,7 +10,7 @@ export class AuthController {
             const userData = req.body
             //TODO validar el body
             const newUser = await AuthService.register(userData)
-            res.status(201).json({ message: 'User register successfully', newUser })
+            res.status(201).json({ message: 'Usuario creado correctamente', newUser })
         } catch (error) {
             next(error)
         }
@@ -20,7 +20,7 @@ export class AuthController {
     static async login(req: Request, res: Response, next: NextFunction) {
         try {
             const userData = req.body
-            console.log('looo',userData.email, userData.password)
+          // esto es solo para probar, se elimina porque se vissualiza en el log del backend en el render.  console.log('looo',userData.email, userData.password) 
             const { token, user } = await AuthService.login(userData.email, userData.password)
             //TODO inyectar cookie al cliente
             console.log(token, user)
@@ -39,7 +39,7 @@ export class AuthController {
                 sameSite: sameSiteValue, // Evita ataques CSRF
 
             })
-            res.status(201).json({ message: 'Login successfully:', user })
+            res.status(201).json({ message: 'Inicio de sesión exitoso:', user })
         } catch (error) {
             next(error)
         }
