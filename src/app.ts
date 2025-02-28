@@ -18,16 +18,16 @@ const app = express()
   }) */
 
 
-app.use(cookieParser())
 //todo limitar cors
 //cambiar la url cuando deploy
 app.use(cors({
-    origin: ['http://localhost:5173', 'https://ondeestafrontend.onrender.com','https://onde-esta-frontend.vercel.app/'],
+    origin: ['http://localhost:5173', 'https://ondeestafrontend.onrender.com','https://onde-esta-frontend.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+app.use(cookieParser())
 app.use(express.json())
 app.use(helmet())
 app.use(compression())
