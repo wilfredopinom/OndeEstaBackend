@@ -9,8 +9,11 @@ import compression from 'compression'
 import cookieParser  from 'cookie-parser'
 import cors  from 'cors'
 import morgan from 'morgan'
+import { profile } from 'console'
 
 const app = express()
+
+
 
 /* app.use(async (req, res, next) => {
     await libsql.sync()
@@ -42,6 +45,7 @@ app.use('/api/auth',authRouter)
 app.use('/api/users',userRouter)
 app.use('/api/offers', offerRouter)
 app.use('/api/categories', categoryRouter)
+app.use('/api/profile',userRouter)
 
 app.get('/', (req:Request, res:Response)=>{
     res.send('Bienvenido al backend (api rest)')

@@ -21,4 +21,22 @@ export class UserService {
         })
         return users
     }
+
+
+    static async updateProfile(userId: number | string, updateData: { phone?: string, bio?: string, location?: string }) {
+        // Usa prisma.user.update en lugar de findByPk
+        const user = await prisma.user.update({
+            where: { id: Number (userId) },
+            data: {
+                // Solo incluye los campos que no son undefined
+                ...(updateData.phone && { phone: updateData.phone }),
+                ...(updateData.bio && { bio: updateData.bio }),
+                ...(updateData.location && { location: updateData.location })
+            }
+        });
+
+        if (!user) throw new HttpException(404, 'User not found');
+
+        return user;
+    }
 }

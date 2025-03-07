@@ -57,7 +57,7 @@ export class AuthController {
     static async getAuthenticatedUser (req: Request, res: Response, next: NextFunction){
         try {
             const token = req.cookies.token;
-            if (!token) return res.status(401).json({ message: "No autenticado" }); //se agrego el return para probar
+            if (!token) res.status(401).json({ message: "No autenticado" }); //se agrego el return para probar
             const decoded = jwt.verify(token, TOKEN_PASSWORD);
             res.status(200).json(decoded)
         } catch (error) {

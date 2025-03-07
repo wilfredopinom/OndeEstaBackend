@@ -6,11 +6,15 @@ CREATE TABLE "User" (
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "role" TEXT,
-    "course" TEXT,
     "active" BOOLEAN NOT NULL DEFAULT true,
     "accepNotifications" BOOLEAN NOT NULL DEFAULT true,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "updatedAt" DATETIME NOT NULL,
+    "phone" TEXT,
+    "bio" TEXT,
+    "location" TEXT,
+    "avatar" TEXT,
+    "verified" BOOLEAN NOT NULL DEFAULT false
 );
 
 -- CreateTable
